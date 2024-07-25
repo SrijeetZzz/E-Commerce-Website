@@ -1,0 +1,40 @@
+.order-container {
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center; /* Center align the text in th and td */
+    vertical-align: middle; /* Vertically center align the text */
+  }
+  
+  .table thead th {
+    background-color: #f8f9fa; /* Light background for header */
+    font-weight: bold; /* Bold text for header */
+  }
+  
+  .table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Light gray background for odd rows */
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* White background for even rows */
+  }
+  
+  .card {
+    display: flex;
+    /* flex-wrap: wrap; Display products vertically */
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card p {
+    margin: 5px 0; /* Add some margin to paragraphs for better spacing */
+  }
+  

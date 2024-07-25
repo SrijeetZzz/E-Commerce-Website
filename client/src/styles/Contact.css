@@ -1,0 +1,57 @@
+.container {
+    max-width: fit-content;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    min-height: 40vh;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .contact-info {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-info p {
+    margin: 10px 0;
+  }
+  
+  .availability {
+    margin-top: 20px;
+    color: #666;
+    display: flex;
+  }
+  .contact-details{
+    display: flex;
+    flex-direction: row;
+    
+  }
+  .icon{
+    display: flex;
+  }
+  .contact-details p{
+    display: flex;
+  }
+  .cntct{
+    display: flex;
+    flex-direction: column;
+  }
+  .profile-picture {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .profile-picture .pic{
+    height:9rem;
+    width: 16rem;
+  }
