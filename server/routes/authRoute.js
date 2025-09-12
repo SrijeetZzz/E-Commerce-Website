@@ -7,7 +7,8 @@ const {
     updateProfileController,
     getOrdersController,
     getAllOrdersController,
-    orderStatusController
+    orderStatusController,
+    getAllUsers
   } = require("../controllers/authController");
 const {isAdmin , requireSignin} = require("../middlewares/authMiddleware")
 
@@ -48,6 +49,9 @@ router.get('/orders', requireSignin, getOrdersController)
 router.get('/all-orders', requireSignin, isAdmin, getAllOrdersController)
 
 //order status update
-router.put('/order-status/:orderId', requireSignin,isAdmin,orderStatusController)
+router.put('/order-status/:orderId', requireSignin,isAdmin,orderStatusController);
+
+//get all users 
+router.get("/users",requireSignin,isAdmin, getAllUsers);
 
 module.exports = router;

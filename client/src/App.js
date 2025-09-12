@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomaPage";
 import About from "./pages/About";
 import Layout from "./components/layout/Layout";
-import Policy from "./pages/Policy";
+import PrivacyPolicy from "./pages/Policy";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Auth/Register";
@@ -56,7 +56,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/policy" element={<Policy />} />
+          <Route path="/policy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>

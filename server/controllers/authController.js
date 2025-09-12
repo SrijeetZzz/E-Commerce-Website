@@ -254,3 +254,24 @@ exports.orderStatusController = async(req,res) => {
     
   }
 }
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({ role: 0 }).select("-password"); 
+    // exclude password field for security
+
+    res.status(200).json({
+      success: true,
+      message: "Fetched all users with role 0",
+      total: users.length,
+      users,
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error fetching users",
+      error: error.message,
+    });
+  }
+};
