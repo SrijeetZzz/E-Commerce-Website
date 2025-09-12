@@ -16,7 +16,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "braintree": "^3.24.0",
     "colors": "^1.4.0",
     "concurrently": "^8.2.2",
