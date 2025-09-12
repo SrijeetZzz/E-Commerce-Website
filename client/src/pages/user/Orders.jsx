@@ -27,8 +27,8 @@ const Orders = () => {
 
   return (
     <>
-      <div className="container-fluid p-3 m-3">
-        <div className="row">
+      <div className="container-fluid">
+        <div className="row m-3">
           <div className="col-md-3">
             <UserMenu />
           </div>

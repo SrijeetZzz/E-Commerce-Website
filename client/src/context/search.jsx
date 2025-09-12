@@ -1,6 +1,4 @@
 import { useState, useContext, createContext } from "react";
-
-
 const SearchContext = createContext();
 
 const SearchProvider = ({ children }) => {
@@ -18,7 +16,6 @@ const SearchProvider = ({ children }) => {
   );
 };
 
-//custom hook
 
 const useSearch = () => useContext(SearchContext);
 

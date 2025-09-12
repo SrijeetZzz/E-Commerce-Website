@@ -1,6 +1,4 @@
 import { useState, useContext, createContext,useEffect } from "react";
-
-
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -18,7 +16,7 @@ useEffect(()=>{
   );
 };
 
-//custom hook
+
 
 const useCart = () => useContext(CartContext);
 

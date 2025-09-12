@@ -4,12 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 
-
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [auth,setAuth] = useAuth()
+  const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,9 +25,9 @@ const Login = () => {
         setAuth({
           ...auth,
           user: res.data.user,
-          token: res.data.token
-        })
-        localStorage.setItem('auth',JSON.stringify(res.data))
+          token: res.data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res.data));
         navigate(location.state || "/");
       } else {
         toast.error(res.data.message);
@@ -68,12 +66,18 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary" >
-            Submit
-          </button>
-          <button type="button" className="btn btn-primary" onClick={()=>{navigate('/forgot-password')}}>
-            Forgot Password
-          </button>
+          <div className="d-flex gap-2">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => navigate("/forgot-password")}
+            >
+              Forgot Password
+            </button>
+          </div>
         </form>
       </div>
     </>

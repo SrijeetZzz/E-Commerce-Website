@@ -1,0 +1,63 @@
+
+
+
+.row img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.similar-products-section {
+  margin-top: 30px;
+}
+
+.similar-card {
+  background-color: rgba(128, 128, 128, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.similar-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.similar-card img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.similar-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.similar-card .card-title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.similar-card .card-text {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.similar-card .text-success {
+  font-weight: bold;
+  color: green;
+}
+
+.row > .col-lg-2,
+.row > .col-md-4,
+.row > .col-sm-6 {
+  display: flex;
+  align-items: stretch;
+}

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { GiShoppingBag } from "react-icons/gi";
@@ -7,11 +8,13 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
   const categories = useCategory();
+
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -21,6 +24,7 @@ const Header = () => {
     localStorage.removeItem("auth");
     toast.success("Logout Successfully");
   };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -35,22 +39,26 @@ const Header = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link to="/" className="navbar-brand" href="#">
+          <Link to="/" className="navbar-brand">
             <GiShoppingBag />
-            Ecomm app
+            Shopsphere
           </Link>
+
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <SearchInput />
+
             <li className="nav-item">
-              <NavLink to="/" className="nav-link ">
+              <NavLink to="/" className="nav-link">
                 Home
               </NavLink>
             </li>
+
             <li className="nav-item dropdown">
               <Link
                 className="nav-link dropdown-toggle"
-                to={"/categories"}
+                to="/categories"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -58,14 +66,16 @@ const Header = () => {
               >
                 Categories
               </Link>
+
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link to={`/categories`} className="dropdown-item">
+                <li key="all-category">
+                  <Link to="/categories" className="dropdown-item">
                     All category
                   </Link>
                 </li>
+
                 {categories?.map((c) => (
-                  <li>
+                  <li key={c._id}>
                     <Link to={`/category/${c.slug}`} className="dropdown-item">
                       {c.name}
                     </Link>
@@ -88,44 +98,43 @@ const Header = () => {
                 </li>
               </>
             ) : (
-              <>
-                <li className="nav-item dropdown">
-                  <NavLink
-                    className="nav-link dropdown-toggle"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    {auth?.user?.name}
-                  </NavLink>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <NavLink
-                        to={`/dashboard/${
-                          auth?.user.role === 1 ? "admin" : "user"
-                        }`}
-                        className="dropdown-item"
-                      >
-                        DASHBOARD
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        onClick={handleLogout}
-                        to="/login"
-                        className="dropdown-item"
-                      >
-                        Logout
-                      </NavLink>
-                    </li>
-                  </ul>
-                </li>
-              </>
+              <li className="nav-item dropdown">
+                <NavLink
+                  className="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {auth?.user?.name}
+                </NavLink>
+                <ul className="dropdown-menu">
+                  <li key="dashboard">
+                    <NavLink
+                      to={`/dashboard/${
+                        auth?.user.role === 1 ? "admin" : "user"
+                      }`}
+                      className="dropdown-item"
+                    >
+                      DASHBOARD
+                    </NavLink>
+                  </li>
+                  <li key="logout">
+                    <NavLink
+                      onClick={handleLogout}
+                      to="/login"
+                      className="dropdown-item"
+                    >
+                      Logout
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
             )}
+
             <li className="nav-item">
               <Badge count={cart.length} showZero>
                 <NavLink to="/cart" className="nav-link">
-                  Cart 
+                  <FaShoppingCart size={20} />
                 </NavLink>
               </Badge>
             </li>

@@ -4,8 +4,8 @@ import AdminMenu from "../../components/layout/AdminMenu";
 const Users = () => {
   return (
     <>
-      <div className="container-fluid m-3 p-3">
-        <div className="row">
+      <div className="container-fluid">
+        <div className="row m-3">
           <div className="col-md-3">
             <AdminMenu />
           </div>

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import "../styles/CategoryProductStyle.css"
+import "../styles/ProductStyle.css"
 
 const CategoryProduct = () => {
   const [products, setProducts] = useState([]);
@@ -21,8 +20,7 @@ const CategoryProduct = () => {
       const { data } = await axios.get(
         `/api/v1/product/product-category/${params.slug}`
       );
-      console.log("API response data:", data); // Log the response to check its structure
-      setProducts(data?.product || []); // Ensure 'product' field is used
+      setProducts(data?.product || []);
       setCategory(data?.category || {});
     } catch (error) {
       console.log("Error fetching products by category:", error);
@@ -30,43 +28,44 @@ const CategoryProduct = () => {
   };
 
   return (
-    <div className="container mt-3 category">
-      <h1 className="text-center">Category - {category?.name}</h1>
-      <div className="row">
-        <div className="col-md-12">
-          {products.length === 0 ? (
-            <p>No products found for this category.</p>
-          ) : (
-            <div className="d-flex flex-wrap">
-              {products.map((p) => (
-                <div key={p._id} className="card m-2" style={{ width: "18rem" }}>
-                  <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text">
-                      {p.description.substring(0, 30)}
-                    </p>
-                    <p className="card-text">${p.price}</p>
+    <div className="container-fluid category">
+      <h1 className="text-center mb-4">Category - {category?.name}</h1>
+      {products.length === 0 ? (
+        <p className="text-center">No products found for this category.</p>
+      ) : (
+        <div className="row">
+          {products.map((p) => (
+            <div
+              key={p._id}
+              className="col-lg-3 col-md-4 col-sm-6 mb-3 d-flex align-items-stretch"
+            >
+              <div className="card similar-card w-100">
+                <img
+                  src={`/api/v1/product/product-photo/${p._id}`}
+                  className="card-img-top"
+                  alt={p.name}
+                />
+                <div className="card-body d-flex flex-column justify-content-between">
+                  <h5 className="card-title">{p.name}</h5>
+                  <p className="card-text">{p.description.substring(0, 30)}...</p>
+                  <p className="card-text text-success">${p.price}</p>
+                  <div className="d-flex gap-2">
                     <button
-                      className="btn btn-primary ms-1"
+                      className="btn btn-primary flex-fill"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
                     </button>
-                    <button className="btn btn-secondary ms-1">
+                    <button className="btn btn-secondary flex-fill">
                       Add to Cart
                     </button>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-          )}
+          ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

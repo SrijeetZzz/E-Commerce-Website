@@ -1,8 +1,7 @@
 import React from 'react';
-import '../styles/Contact.css'; // Import CSS file for styling
+import '../styles/Contact.css'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-
 
 function Contact() {
   return (

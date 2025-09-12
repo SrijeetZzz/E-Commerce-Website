@@ -1,8 +1,6 @@
 const JWT = require("jsonwebtoken");
 const userModel = require("../models/userModel");
 
-
-
 // //protected routes token based
 exports.requireSignin = async (req, res, next) => {
   try {
@@ -27,19 +25,6 @@ exports.requireSignin = async (req, res, next) => {
     res.status(401).json({ success: false, message: "Invalid token" });
   }
 };
-// exports.requireSignIn = async (req, res, next) => {
-//   try {
-//     const decode = JWT.verify(
-//       req.headers.authorization,
-//       process.env.JWT_SECRET
-//     );
-//     req.user = decode;
-//     next();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 
 //admin access
 exports.isAdmin = async (req, res, next) => {

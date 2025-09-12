@@ -63,68 +63,30 @@ exports.createProductController = async (req, res) => {
     });
   }
 };
-// exports.createProductController = async (req, res) => {
-//   try {
-//     const { name, description, price, category, quantity, shipping } = req.fields;
-//     const { photo } = req.files;
-
-//     // validation
-//     switch (true) {
-//       case !name:
-//         return res.status(500).send({ error: `Name is required` });
-//       case !description:
-//         return res.status(500).send({ error: `Description is required` });
-//       case !price:
-//         return res.status(500).send({ error: `Price is required` });
-//       case !category:
-//         return res.status(500).send({ error: `Category is required` });
-//       case !quantity:
-//         return res.status(500).send({ error: `Quantity is required` });
-//       case !photo:
-//         return res.status(500).send({ error: `Photo is required` });
-      
-//     }
-
-//     const slug = slugify(name);
-//     const products = new productModel({
-//       ...req.fields,
-//       slug: slug,
-//     });
-
-//     if (photo) {
-//       products.photo.data = fs.readFileSync(photo.path);
-//       products.photo.contentType = photo.type;
-//     }
-
-//     await products.save();
-//     res.status(201).send({
-//       success: true,
-//       message: `Product created successfully`,
-//       products,
-//     });
-//   } catch (error) {
-//     console.error('Error while creating product:', error); // Log the error for debugging
-//     res.status(500).send({
-//       success: false,
-//       error: error.message, // Include the error message in the response
-//       message: `Error while creating product`,
-//     });
-//   }
-// };
 
 //get all products
 exports.getProductController = async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1; 
+    const limit = parseInt(req.query.limit) || 12;
+    const skip = (page - 1) * limit;
+
+    const totalProducts = await productModel.countDocuments(); 
+
     const products = await productModel
       .find()
       .populate("category")
       .select("-photo")
-      .limit(12)
+      .skip(skip)
+      .limit(limit)
       .sort({ createdAt: -1 });
+
     res.status(200).send({
       success: true,
-      total_count: products.length,
-      message: `All products`,
+      total_count: totalProducts,
+      current_page: page,
+      total_pages: Math.ceil(totalProducts / limit),
+      message: `Products page ${page}`,
       products,
     });
   } catch (error) {
@@ -132,10 +94,11 @@ exports.getProductController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: `Error while getting the product`,
+      message: `Error while getting the products`,
     });
   }
 };
+
 
 //getSingleProduct
 exports.getSingleProductController = async (req, res) => {
@@ -293,7 +256,7 @@ exports.productCountController = async (req, res) => {
 // product list base on page
 exports.productListController = async (req, res) => {
   try {
-    const perPage = 3;
+    const perPage = 4;
     const page = req.params.page ? req.params.page : 1;
     const products = await productModel
       .find({})
@@ -346,7 +309,7 @@ exports.relatedProductController = async(req,res)=>{
     const products = await productModel.find({
       category:cid,
       _id:{$ne:pid},
-    }).select("-photo").limit(3).populate("category");
+    }).select("-photo").populate("category");
     res.status(200).send({
       success:true,
       products,

@@ -61,19 +61,19 @@ router.get("/product-count", productCountController);
 router.get("/product-list/:page", productListController);
 
 //search product
-router.get('/search/:keyword', searchProductController);
+router.get("/search/:keyword", searchProductController);
 
 //similar-product
-router.get(`/related-product/:pid/:cid`, relatedProductController)
+router.get(`/related-product/:pid/:cid`, relatedProductController);
 
 //categorywise
-router.get(`/product-category/:slug`, productCategoryController)
+router.get(`/product-category/:slug`, productCategoryController);
 
 //payment routes
 //token
-router.get('/braintree/token', braintreeTokenController)
+router.get("/braintree/token", braintreeTokenController);
 
 //payments
-router.post('/braintree/payment', requireSignin, braintreePaymentsController)
+router.post("/braintree/payment", requireSignin, braintreePaymentsController);
 
 module.exports = router;

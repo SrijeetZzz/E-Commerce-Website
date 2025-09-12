@@ -15,7 +15,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import CreateCategory from "./pages/admin/CreateCategory";
 import CreateProduct from "./pages/admin/CreateProduct";
 import UpdateProduct from "./pages/admin/UpdateProduct";
-import Products from "./pages/admin/Product"
+import Products from "./pages/admin/Product";
 import Users from "./pages/admin/Users";
 import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
@@ -50,8 +50,6 @@ function App() {
             <Route path="admin/products" element={<Products/>}/>
             <Route path="admin/users" element={<Users/>}/>
             <Route path="admin/orders" element={<AdminOrders/>}/>
-        
-            
           </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
