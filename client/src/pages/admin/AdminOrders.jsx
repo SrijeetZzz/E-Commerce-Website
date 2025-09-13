@@ -19,10 +19,11 @@ const AdminOrders = () => {
   ]);
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
+       const API = process.env.REACT_APP_API_URL;
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-orders", {
+      const { data } = await axios.get(`${API}/api/v1/auth/all-orders`, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -41,7 +42,7 @@ const AdminOrders = () => {
   const handleChange = async (orderId, value) => {
     try {
       await axios.put(
-        `/api/v1/auth/order-status/${orderId}`,
+        `${API}/api/v1/auth/order-status/${orderId}`,
         { status: value },
         {
           headers: {

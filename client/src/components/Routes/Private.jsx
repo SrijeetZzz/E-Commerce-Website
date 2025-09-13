@@ -7,6 +7,8 @@ import Spinner from "../Spinner";
 export default function PrivateRoute() {
   const [ok, setOk] = useState(false);
   const [auth] = useAuth();
+      const API = process.env.REACT_APP_API_URL;
+  
 
   useEffect(() => {
     const authCheck = async () => {
@@ -15,7 +17,7 @@ export default function PrivateRoute() {
           setOk(false);
           return;
         }
-        const res = await axios.get("/api/v1/auth/user-auth", {
+        const res = await axios.get(`${API}/api/v1/auth/user-auth`, {
           headers: {
             Authorization: `Bearer ${auth.token}`,
           },

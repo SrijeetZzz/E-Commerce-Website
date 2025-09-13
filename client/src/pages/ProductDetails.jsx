@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const [loadingProduct, setLoadingProduct] = useState(true);
   const [loadingSimilar, setLoadingSimilar] = useState(true);
   const [cart, setCart] = useCart();
+    const API = process.env.REACT_APP_API_URL;
 
   // Fetch product
   useEffect(() => {
@@ -23,7 +24,7 @@ const ProductDetails = () => {
     try {
       setLoadingProduct(true);
       const { data } = await axios.get(
-        `/api/v1/product/get-single-product/${params.slug}`
+        `${API}/api/v1/product/get-single-product/${params.slug}`
       );
       setProduct(data?.product);
       setLoadingProduct(false);
@@ -41,7 +42,7 @@ const ProductDetails = () => {
     try {
       setLoadingSimilar(true);
       const { data } = await axios.get(
-        `/api/v1/product/related-product/${pid}/${cid}`
+        `${API}/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProduct(data?.products || []);
       setLoadingSimilar(false);

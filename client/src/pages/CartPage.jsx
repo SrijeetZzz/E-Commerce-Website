@@ -13,6 +13,7 @@ const CartPage = () => {
   const [instance, setInstance] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+    const API = process.env.REACT_APP_API_URL;
 
   //total price
   const totalPrice = () => {
@@ -46,7 +47,7 @@ const CartPage = () => {
   //get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get(`${API}/api/v1/product/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -61,7 +62,7 @@ const CartPage = () => {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
       const { data } = await axios.post(
-        "/api/v1/product/braintree/payment",
+        `${API}/api/v1/product/braintree/payment`,
         { nonce, cart },
         {
           headers: { Authorization: `Bearer ${auth.token}` },

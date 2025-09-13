@@ -6,7 +6,8 @@ import Spinner from "../Spinner";
 
 export default function AdminRoute() {
   const [ok, setOk] = useState(false);
-  const [auth] = useAuth(); 
+  const [auth] = useAuth();
+  const API = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const authCheck = async () => {
@@ -15,7 +16,7 @@ export default function AdminRoute() {
           setOk(false);
           return;
         }
-        const res = await axios.get("/api/v1/auth/admin-auth", {
+        const res = await axios.get(`${API}/api/v1/auth/admin-auth`, {
           headers: {
             Authorization: `Bearer ${auth.token}`,
           },
@@ -35,7 +36,5 @@ export default function AdminRoute() {
     authCheck();
   }, [auth?.token]);
 
-
-  return ok ? <Outlet /> : <Spinner path=""/>;
+  return ok ? <Outlet /> : <Spinner path="" />;
 }
-

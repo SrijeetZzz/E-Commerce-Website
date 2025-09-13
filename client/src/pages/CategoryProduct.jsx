@@ -8,6 +8,7 @@ const CategoryProduct = () => {
   const [category, setCategory] = useState({});
   const params = useParams();
   const navigate = useNavigate();
+    const API = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (params?.slug) {
@@ -18,7 +19,7 @@ const CategoryProduct = () => {
   const getProductsByCategory = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.slug}`
+        `${API}/api/v1/product/product-category/${params.slug}`
       );
       setProducts(data?.product || []);
       setCategory(data?.category || {});

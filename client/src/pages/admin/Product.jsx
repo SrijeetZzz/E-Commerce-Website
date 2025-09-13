@@ -9,7 +9,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(false); // loader state
+  const [loading, setLoading] = useState(false); 
+    const API = process.env.REACT_APP_API_URL;// loader state
 
   const limit = 12; // products per page
 
@@ -18,7 +19,7 @@ const Products = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `/api/v1/product/get-product?page=${pageNumber}&limit=${limit}`
+        `${API}/api/v1/product/get-product?page=${pageNumber}&limit=${limit}`
       );
       setProducts(data.products);
       setPage(data.current_page);

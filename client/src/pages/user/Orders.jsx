@@ -3,14 +3,15 @@ import UserMenu from "../../components/layout/UserMenu";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
-import "./Orders.css"
+import "./Orders.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
+  const API = process.env.REACT_APP_API_URL;
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/orders", {
+      const { data } = await axios.get(`${API}/api/v1/auth/orders`, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
