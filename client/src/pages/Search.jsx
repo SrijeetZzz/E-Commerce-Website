@@ -8,6 +8,7 @@ const Search = () => {
   const [values, setValues] = useSearch();
   const [cart, setCart] = useCart();
   const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL.replace(/\/$/, "");
   return (
     <div className="container">
       <div className="text-center">
