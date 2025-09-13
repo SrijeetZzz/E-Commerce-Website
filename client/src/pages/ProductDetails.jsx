@@ -82,7 +82,7 @@ const ProductDetails = () => {
           <>
             <div className="col-lg-5 col-md-6 mb-3 d-flex justify-content-center">
               <img
-                src={`/api/v1/product/product-photo/${product._id}`}
+                src={`${API}/api/v1/product/product-photo/${product._id}`}
                 className="img-fluid rounded"
                 alt={product.name}
                 style={{ height: "400px", objectFit: "cover" }}
@@ -126,7 +126,7 @@ const ProductDetails = () => {
               >
                 <div className="card similar-card w-100">
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${API}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                     style={{ cursor: "pointer" }}

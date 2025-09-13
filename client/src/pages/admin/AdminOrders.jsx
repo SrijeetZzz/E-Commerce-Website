@@ -113,7 +113,7 @@ const AdminOrders = () => {
                     <div className="col-md-4 col-sm-6 col-12 mb-3" key={p._id}>
                       <div className="card h-100">
                         <img
-                          src={`/api/v1/product/product-photo/${p._id}`}
+                          src={`${API}/api/v1/product/product-photo/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
                           style={{ objectFit: "cover", height: "220px" }}

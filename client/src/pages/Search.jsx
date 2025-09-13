@@ -26,7 +26,7 @@ const Search = () => {
             >
               <div className="card similar-card w-100">
                 <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`${API}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

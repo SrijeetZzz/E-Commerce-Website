@@ -65,7 +65,7 @@ const Products = () => {
                     style={{ width: "18rem", height: "26rem" }}
                   >
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`${API}/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       style={{ height: "20rem", objectFit: "cover" }}

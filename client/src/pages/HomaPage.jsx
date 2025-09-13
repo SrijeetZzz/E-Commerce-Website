@@ -169,7 +169,7 @@ const HomePage = () => {
                 key={p._id}
               >
                 <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`${API}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
