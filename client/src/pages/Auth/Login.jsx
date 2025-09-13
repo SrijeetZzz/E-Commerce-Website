@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
-  const API = process.env.REACT_APP_API_URL;
+  const API = process.env.REACT_APP_API;
 
   const navigate = useNavigate();
   const location = useLocation();
