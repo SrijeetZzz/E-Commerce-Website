@@ -24,7 +24,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `/${API}/api/v1/product/get-single-product/${params.slug}`
+        `${API}/api/v1/product/get-single-product/${params.slug}`
       );
       setName(data.product.name);
       setId(data.product._id);
@@ -44,7 +44,7 @@ const UpdateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`/${API}/api/v1/category/get-category`);
+      const { data } = await axios.get(`${API}/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -96,7 +96,7 @@ const UpdateProduct = () => {
       productData.append("category", category);
 
       const { data } = await axios.put(
-        `/${API}/api/v1/product/update-product/${id}`,
+        `${API}/api/v1/product/update-product/${id}`,
         productData,
         {
           headers: {
@@ -119,7 +119,7 @@ const UpdateProduct = () => {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
       if (!answer) return;
       const { data } = await axios.delete(
-        `/${API}/api/v1/product/delete-product/${id}`
+        `${API}/api/v1/product/delete-product/${id}`
       );
       toast.success("Product Deleted Succfully");
       navigate("/dashboard/admin/products");

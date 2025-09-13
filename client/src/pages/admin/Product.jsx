@@ -19,7 +19,7 @@ const Products = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `/${API}/api/v1/product/get-product?page=${pageNumber}&limit=${limit}`
+        `${API}/api/v1/product/get-product?page=${pageNumber}&limit=${limit}`
       );
       setProducts(data.products);
       setPage(data.current_page);

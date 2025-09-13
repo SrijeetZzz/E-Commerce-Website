@@ -11,7 +11,7 @@ const Orders = () => {
   const API = process.env.REACT_APP_API_URL;
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`/${API}/api/v1/auth/orders`, {
+      const { data } = await axios.get(`${API}/api/v1/auth/orders`, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
