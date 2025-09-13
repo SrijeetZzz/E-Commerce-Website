@@ -23,7 +23,7 @@ const AdminOrders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${API}/api/v1/auth/all-orders`, {
+      const { data } = await axios.get(`/${API}/api/v1/auth/all-orders`, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -42,7 +42,7 @@ const AdminOrders = () => {
   const handleChange = async (orderId, value) => {
     try {
       await axios.put(
-        `${API}/api/v1/auth/order-status/${orderId}`,
+        `/${API}/api/v1/auth/order-status/${orderId}`,
         { status: value },
         {
           headers: {

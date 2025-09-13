@@ -130,7 +130,7 @@ const UserProfile = () => {
 
     try {
       const { data } = await axios.put(
-        `${API}/api/v1/auth/profile`,
+        `/${API}/api/v1/auth/profile`,
         {
           name,
           email,

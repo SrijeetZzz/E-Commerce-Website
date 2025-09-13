@@ -24,7 +24,7 @@ const ProductDetails = () => {
     try {
       setLoadingProduct(true);
       const { data } = await axios.get(
-        `${API}/api/v1/product/get-single-product/${params.slug}`
+        `/${API}/api/v1/product/get-single-product/${params.slug}`
       );
       setProduct(data?.product);
       setLoadingProduct(false);
@@ -42,7 +42,7 @@ const ProductDetails = () => {
     try {
       setLoadingSimilar(true);
       const { data } = await axios.get(
-        `${API}/api/v1/product/related-product/${pid}/${cid}`
+        `/${API}/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProduct(data?.products || []);
       setLoadingSimilar(false);

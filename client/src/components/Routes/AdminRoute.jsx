@@ -16,7 +16,7 @@ export default function AdminRoute() {
           setOk(false);
           return;
         }
-        const res = await axios.get(`${API}/api/v1/auth/admin-auth`, {
+        const res = await axios.get(`/${API}/api/v1/auth/admin-auth`, {
           headers: {
             Authorization: `Bearer ${auth.token}`,
           },

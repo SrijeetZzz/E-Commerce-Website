@@ -19,7 +19,7 @@ const CategoryProduct = () => {
   const getProductsByCategory = async () => {
     try {
       const { data } = await axios.get(
-        `${API}/api/v1/product/product-category/${params.slug}`
+        `/${API}/api/v1/product/product-category/${params.slug}`
       );
       setProducts(data?.product || []);
       setCategory(data?.category || {});

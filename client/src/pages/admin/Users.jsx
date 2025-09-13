@@ -14,7 +14,7 @@ const Users = () => {
       if (!authData) return toast.error("Authentication data not found");
 
       let token = JSON.parse(authData).token;
-      const { data } = await axios.get(`${API}/api/v1/auth/users`,{
+      const { data } = await axios.get(`/${API}/api/v1/auth/users`,{
           headers: {
             Authorization: `Bearer ${token}`,
           },
