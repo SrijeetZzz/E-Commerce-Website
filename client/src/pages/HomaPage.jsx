@@ -21,7 +21,7 @@ const HomePage = () => {
   const [cart, setCart] = useCart();
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
-    const API = process.env.REACT_APP_API_URL;
+    const API = process.env.REACT_APP_API_URL.replace(/\/$/, "");
 
   // get all category
   const getAllCategory = async () => {
